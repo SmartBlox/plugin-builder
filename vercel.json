@@ -1,0 +1,32 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "kite-service/main.go",
+      "use": "@vercel/go"
+    },
+    {
+      "src": "kite-web/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/kite-service/main.go"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/kite-web/dist/$1"
+    }
+  ],
+  "env": {
+    "KITE_API__HOST": "0.0.0.0",
+    "KITE_API__PORT": "8080",
+    "KITE_APP__PUBLIC_BASE_URL": "https://your-vercel-app.vercel.app",
+    "KITE_API__PUBLIC_BASE_URL": "https://your-vercel-app.vercel.app"
+  }
+} 

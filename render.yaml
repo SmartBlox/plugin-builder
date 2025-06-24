@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: minecraft-plugin-builder
+    env: go
+    buildCommand: |
+      cd kite-web && npm install && npm run build
+      cd ../kite-service && go mod download
+    startCommand: cd kite-service && go run main.go server start
+    envVars:
+      - key: KITE_API__HOST
+        value: 0.0.0.0
+      - key: KITE_API__PORT
+        value: 8080
+      - key: KITE_APP__PUBLIC_BASE_URL
+        value: https://minecraft-plugin-builder.onrender.com
+      - key: KITE_API__PUBLIC_BASE_URL
+        value: https://minecraft-plugin-builder.onrender.com 

@@ -1,0 +1,45 @@
+[api]
+host = "127.0.0.1"
+port = 8080
+public_base_url = "http://localhost:8080"
+strict_cookies = false
+secure_cookies = false
+
+[app]
+public_base_url = "http://localhost:8080"
+
+[user_limits]
+max_apps_per_user = 10
+max_commands_per_app = 25
+max_variables_per_app = 25
+max_messages_per_app = 25
+max_event_listeners_per_app = 5
+max_asset_size = 8_000_000
+credits_per_month = 100_000
+
+[engine]
+max_stack_depth = 25
+max_operations = 100
+max_credits = 25
+
+[database.postgres]
+host = "127.0.0.1"
+port = 5432
+user = "postgres"
+db_name = "kite"
+
+[database.s3]
+endpoint = "localhost:9000"
+access_key_id = "kite"
+secret_access_key = "1234567890"
+
+[[billing.plans]]
+id = "basic"
+title = "Basic"
+description = "Get started with Kite for free. No credit card required."
+price = 0
+default = true
+feature_max_collaborators = 1
+feature_usage_credits_per_month = 10000
+feature_max_guilds = 100
+feature_priority_support = false 
